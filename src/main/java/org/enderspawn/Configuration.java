@@ -45,6 +45,7 @@ public class Configuration extends YamlConfiguration {
 
 	public	boolean	destroyBlocks;
 	public	boolean	spawnEgg;
+    public  boolean rebuildCrystals;
 	public	boolean	spawnPortal;
 	public	boolean teleportEgg;
 	public	boolean	useCustomExp;
@@ -66,6 +67,7 @@ public class Configuration extends YamlConfiguration {
 
 		destroyBlocks	= false;
 		spawnEgg	= true;
+        rebuildCrystals = true;
 		spawnPortal	= false;
 		teleportEgg	= false;
 		useCustomExp	= false;
@@ -93,15 +95,16 @@ public class Configuration extends YamlConfiguration {
 		}
 
 		destroyBlocks	= getBoolean("DestroyBlocks",		destroyBlocks);
-		spawnEgg	= getBoolean("SpawnEgg",		spawnEgg);
-		spawnPortal	= getBoolean("SpawnPortal",		spawnPortal);
-		teleportEgg	= getBoolean("EggsCanTeleport",		teleportEgg);
+		spawnEgg	= getBoolean("SpawnEgg",		        spawnEgg);
+		rebuildCrystals	= getBoolean("RebuildCrystals",		rebuildCrystals);
+		spawnPortal	= getBoolean("SpawnPortal",		        spawnPortal);
+		teleportEgg	= getBoolean("EggsCanTeleport",		    teleportEgg);
 		maxSpawnMinutes	= getLong("MaxRespawnMinutes",		maxSpawnMinutes);
 		minSpawnMinutes	= getLong("MinRespawnMinutes",		minSpawnMinutes);
 		expResetMinutes	= getLong("EXPResetMinutes",		expResetMinutes);
-		expMaxDistance	= getLong("EXPMaxDistance",		expMaxDistance);
+		expMaxDistance	= getLong("EXPMaxDistance",		    expMaxDistance);
 		useCustomExp	= getBoolean("UseCustomEXPTotal",	useCustomExp);
-		customExp	= getInt("CustomEXPTotal",		customExp);
+		customExp	= getInt("CustomEXPTotal",		        customExp);
 
 		getWorlds();
 
@@ -132,7 +135,8 @@ public class Configuration extends YamlConfiguration {
 		YamlConfiguration newConfig = new YamlConfiguration();
 
 		newConfig.set("DestroyBlocks",		destroyBlocks);
-		newConfig.set("SpawnEgg",		spawnEgg);
+		newConfig.set("SpawnEgg",		    spawnEgg);
+		newConfig.set("RebuildCrystals",    rebuildCrystals);
 		newConfig.set("SpawnPortal",		spawnPortal);
 		newConfig.set("EggsCanTeleport",	teleportEgg);
 		newConfig.set("MaxRespawnMinutes",	maxSpawnMinutes);
