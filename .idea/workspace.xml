@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="840dfd54-5e0a-436b-b283-29e0e331f6cd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_5_1_R0_2_SNAPSHOT.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/enderspawn/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/org/enderspawn/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EnderSpawn.iml" afterPath="$PROJECT_DIR$/EnderSpawn.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="EnderSpawn.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="840dfd54-5e0a-436b-b283-29e0e331f6cd" time="1365440701324" ignored="false" />
+    <file path="/Dummy.txt" changelist="840dfd54-5e0a-436b-b283-29e0e331f6cd" time="1365440732765" ignored="false" />
     <file path="/config.yml" changelist="840dfd54-5e0a-436b-b283-29e0e331f6cd" time="1365438882750" ignored="false" />
     <file path="/.gitignore" changelist="840dfd54-5e0a-436b-b283-29e0e331f6cd" time="1365383674348" ignored="false" />
     <file path="/EnderSpawnListener.java" changelist="840dfd54-5e0a-436b-b283-29e0e331f6cd" time="1365422879942" ignored="false" />
@@ -110,7 +106,7 @@
       <file leaf-file-name="Configuration.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/enderspawn/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="84" selection-start="1585" selection-end="1585" vertical-scroll-proportion="0.55934197">
+            <state line="69" column="82" selection-start="2178" selection-end="2178" vertical-scroll-proportion="0.13983549">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -435,7 +431,11 @@
       <created>1365392214349</created>
       <updated>1365392214349</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update Configuration">
+      <created>1365440740928</created>
+      <updated>1365440740928</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -639,7 +639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/enderspawn/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="84" selection-start="1585" selection-end="1585" vertical-scroll-proportion="0.55934197">
+        <state line="69" column="82" selection-start="2178" selection-end="2178" vertical-scroll-proportion="0.13983549">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
