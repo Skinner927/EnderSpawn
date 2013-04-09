@@ -23,14 +23,11 @@ package org.enderspawn;
 	import java.util.Date;
 	import java.util.List;
 //* IMPORTS: BUKKIT
-	import org.bukkit.block.Block;
+    import org.bukkit.*;
+    import org.bukkit.block.Block;
 	import org.bukkit.block.BlockState;
-	import org.bukkit.Chunk;
-	import org.bukkit.entity.EnderDragon;
-	import org.bukkit.entity.Entity;
-	import org.bukkit.entity.LivingEntity;
-	import org.bukkit.entity.Player;
-	import org.bukkit.event.block.BlockFromToEvent;
+    import org.bukkit.entity.*;
+    import org.bukkit.event.block.BlockFromToEvent;
 	import org.bukkit.event.entity.EntityCreatePortalEvent;
 	import org.bukkit.event.entity.EntityDeathEvent;
 	import org.bukkit.event.entity.EntityExplodeEvent;
@@ -39,20 +36,20 @@ package org.enderspawn;
 	import org.bukkit.event.EventHandler;
 	import org.bukkit.event.EventPriority;
 	import org.bukkit.event.Listener;
-	import org.bukkit.event.world.ChunkUnloadEvent;
+    import org.bukkit.event.world.ChunkLoadEvent;
+    import org.bukkit.event.world.ChunkUnloadEvent;
 	import org.bukkit.inventory.ItemStack;
-	import org.bukkit.Location;
-	import org.bukkit.plugin.PluginManager;
-	import org.bukkit.PortalType;
-	import org.bukkit.World;
+    import org.bukkit.plugin.PluginManager;
 //* IMPORTS: OTHER
 	//* NOT NEEDED
 
 public class EnderSpawnListener implements Listener {
 	private EnderSpawn plugin;
+    private List<Location> updatedCrystalChunks;
 
 	public EnderSpawnListener(EnderSpawn plugin) {
 		this.plugin = plugin;
+        this.updatedCrystalChunks = new ArrayList<Location>();
 	}
 
 	public void register() {
@@ -61,6 +58,44 @@ public class EnderSpawnListener implements Listener {
 		manager = plugin.getServer().getPluginManager();
 		manager.registerEvents(this, plugin);
 	}
+
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+    public void onChunkLoad(ChunkLoadEvent event) {
+
+        // Rebuild Crystals?
+        if(!plugin.config.rebuildCrystals)
+            return;
+
+        World world = event.getWorld();
+        String worldName = world.getName().toLowerCase();
+
+        // Check if the world is to be watched
+        if (!plugin.config.worlds.containsKey(worldName))
+            return;
+
+        Chunk chunk = event.getChunk();
+        Location chunkLocation = new Location(world, chunk.getX(), 0, chunk.getZ());
+
+        // Check this chunk hasn't been checked already
+        if(updatedCrystalChunks.contains(chunkLocation))
+            return;
+
+        // Add it
+        updatedCrystalChunks.add(chunkLocation);
+
+        // Search the whole chunk for bedrock
+        for (int x = chunk.getX(); x < chunk.getX() + 16; x++) {
+            for (int z = chunk.getZ(); z < chunk.getZ() + 16; z++) {
+                for(int y = 0; y < 256; y++) {
+                    if(world.getBlockAt(x, y, z).getType() != Material.BEDROCK)
+                        continue;
+
+                    // Spawn the Crystal
+                    world.spawnEntity(new Location(world, x, y + 1, z), EntityType.ENDER_CRYSTAL);
+                }
+            }
+        }
+    }
 
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onChunkUnload(ChunkUnloadEvent event) {
